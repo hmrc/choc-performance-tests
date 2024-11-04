@@ -40,6 +40,10 @@ object Requests extends ServicesConfiguration {
       .formParam("credentialStrength", "strong")
       .formParam("confidenceLevel", "50")
       .formParam("affinityGroup", "Individual")
+      .formParam("enrolment[0].name", "HMRC-MTD-VAT")
+      .formParam("enrolment[0].taxIdentifier[0].name", "VRN")
+      .formParam("enrolment[0].taxIdentifier[0].value", "101747696")
+      .formParam("enrolment[0].state", "Activated")
       .check(status.is(303))
       .check(header("Location").is(s"$baseUrl$route/test-only/start-journey").saveAs("StartPage"))
 
